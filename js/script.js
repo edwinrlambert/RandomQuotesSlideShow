@@ -5,6 +5,7 @@
  * `quotes` array 
 ***/
 var quotes = [];
+var prevQuote = ""; // Creating a global variable to save previously displayed quote.
 
 // Adding quotes object to the array.
 quotes.push({
@@ -32,6 +33,7 @@ quotes.push({
     "source": "Winston Churchill"
 })
 
+// Logging out quotes array.
 console.log(quotes)
 
 /***
@@ -51,6 +53,15 @@ function getRandomQuote(len) {
 ***/
 function printQuote() {
     let randomQuote = getRandomQuote(quotes.length);
+
+    // Checking if the current random quote if the same as previously displayed quote.
+    while (randomQuote.quote == prevQuote) {
+        randomQuote = getRandomQuote(quotes.length);
+    }
+    // Saving current quote to prevQuote.
+    console.log("Previous Quote: " + prevQuote)
+    prevQuote = randomQuote.quote
+
     // Assigning the quote and the source.
     let pToHTML = "<p class = 'quote'>" + randomQuote.quote + "</p>" +
         "<p class = 'source'>" + randomQuote.source;
@@ -65,11 +76,13 @@ function printQuote() {
 
     document.getElementById('quote-box').innerHTML = pToHTML;
 
+    // Logging out random quote details.
     console.log(randomQuote)
-    console.log(randomQuote.quote)
-    console.log(randomQuote.source)
-    console.log(randomQuote.citation)
-    console.log(randomQuote.year)
+    console.log("Quote: " + randomQuote.quote)
+    console.log("Source: " + randomQuote.source)
+    console.log("Citation: " + randomQuote.citation)
+    console.log("Year: " + randomQuote.year)
+    console.log("")
 }
 
 
@@ -78,5 +91,4 @@ function printQuote() {
  * The code will look like the following. You need to complete it.
 
 ***/
-
 document.getElementById('load-quote').addEventListener("click", printQuote)
