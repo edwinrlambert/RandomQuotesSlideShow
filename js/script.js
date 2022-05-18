@@ -4,8 +4,8 @@
 /*** 
  * `quotes` array 
 ***/
-var quotes = [];
-var prevQuote = ""; // Creating a global variable to save previously displayed quote.
+let quotes = [];
+let prevQuote = ""; // Creating a global variable to save previously displayed quote.
 
 // Adding quotes object to the array.
 quotes.push({
@@ -41,7 +41,7 @@ console.log(quotes)
 ***/
 function getRandomQuote(len) {
     // Generating a random number between 0 and len of quotes.
-    randomNumber = Math.floor(Math.random() * len);
+    let randomNumber = Math.floor(Math.random() * len);
     // Getting a random quote from the array.
     randomQuote = quotes[randomNumber];
     return randomQuote;
@@ -59,8 +59,8 @@ function printQuote() {
         randomQuote = getRandomQuote(quotes.length);
     }
     // Saving current quote to prevQuote.
-    console.log("Previous Quote: " + prevQuote)
-    prevQuote = randomQuote.quote
+    console.log("Previous Quote: " + prevQuote);
+    prevQuote = randomQuote.quote;
 
     // Assigning the quote and the source.
     let pToHTML = "<p class = 'quote'>" + randomQuote.quote + "</p>" +
@@ -72,17 +72,17 @@ function printQuote() {
     if ('year' in randomQuote) { pToHTML += "<span class = 'year'>" + randomQuote.year + "</span>" }
 
     // Closing the tag.
-    pToHTML += "</p>"
+    pToHTML += "</p>";
 
     document.getElementById('quote-box').innerHTML = pToHTML;
 
     // Logging out random quote details.
-    console.log(randomQuote)
-    console.log("Quote: " + randomQuote.quote)
-    console.log("Source: " + randomQuote.source)
-    console.log("Citation: " + randomQuote.citation)
-    console.log("Year: " + randomQuote.year)
-    console.log("")
+    console.log(randomQuote);
+    console.log("Quote: " + randomQuote.quote);
+    console.log("Source: " + randomQuote.source);
+    console.log("Citation: " + randomQuote.citation);
+    console.log("Year: " + randomQuote.year);
+    console.log("");
 }
 
 
@@ -91,4 +91,4 @@ function printQuote() {
  * The code will look like the following. You need to complete it.
 
 ***/
-document.getElementById('load-quote').addEventListener("click", printQuote)
+document.getElementById('load-quote').addEventListener("click", printQuote);
